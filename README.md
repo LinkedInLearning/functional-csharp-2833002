@@ -1,5 +1,5 @@
 # Explore functional patterns in C#
-This is the repository for the LinkedIn Learning course [COURSENAME]. The full course is available from [LinkedIn Learning](LICOURSEURL).
+This is the repository for the LinkedIn Learning course **Explore functional patterns in C#**. The full course is available from [LinkedIn Learning](LICOURSEURL).
 
 ## Description
 
