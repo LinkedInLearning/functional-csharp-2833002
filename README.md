@@ -1,4 +1,4 @@
-# C# Advanced:  Functional programming patterns
+# Explore functional patterns in C#
 This is the repository for the LinkedIn Learning course [COURSENAME]. The full course is available from [LinkedIn Learning](LICOURSEURL).
 
 [![COURSENAME](COURSEIMAGE)](LICOURSEURL)
