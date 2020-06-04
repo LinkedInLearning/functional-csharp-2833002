@@ -1,9 +1,9 @@
 # Explore functional patterns in C#
 This is the repository for the LinkedIn Learning course [COURSENAME]. The full course is available from [LinkedIn Learning](LICOURSEURL).
 
-[![COURSENAME](COURSEIMAGE)](LICOURSEURL)
+## Description
 
-[COURSEDESCRIPTION]
+Functional programming (FP) languages are well equipped to handle modern software problems like massive scale, distributed systems and multiple threaded runtimes. Microsoft created the F# functional language to address this problem space and along the way they also introduced many FP features to C#. In this course we’ll look at how to exploit these new features, such as higher order functions and immutability to add functional programming to your code.
 
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
