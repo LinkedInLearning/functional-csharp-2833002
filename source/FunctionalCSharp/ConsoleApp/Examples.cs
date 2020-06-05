@@ -13,7 +13,7 @@ namespace ConsoleApp
 		// A side effect is a change of system state 
 		// or observable interaction with the outside world
 		// that occurs during the calculation of a result.
-		
+
 		// a function should not 
 		// 1. Mutate shared state
 		// 2. Mutate its input arguments
@@ -41,7 +41,7 @@ namespace ConsoleApp
 
 		public int TotalTheNumbers()
 		{
-			int total =0;
+			int total = 0;
 			foreach (int number in _numbers)
 			{
 				total += number;
@@ -50,5 +50,6 @@ namespace ConsoleApp
 		}
 		#endregion
 
-	
+
+	}
 }
