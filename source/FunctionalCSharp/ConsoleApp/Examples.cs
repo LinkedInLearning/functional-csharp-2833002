@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace ConsoleApp
@@ -19,40 +20,21 @@ namespace ConsoleApp
 		//
 	
 
-		#region List as shared state
-
-
-		private List<int> _numbers = new List<int> { 1, 3, 5, 7 };
-
-		public void AddNumbersToListOld()
-		{
-			_numbers.Add(2);
-			_numbers.Add(4);
-		}
-
-		public int TotalTheNumbersOld()
-		{
-			int total = 0;
-			foreach (int number in _numbers)
-			{
-				total += number;
-			}
-			return total;
-		}
-		#endregion
-
 		#region Don't mutate input arguments
 		public void DoWork()
-		{ 
+		{
 
-			
-			var numbersList = new List<int> { 1, 3, 5, 7 };
+			// modify to work with .NET Immutable collections
+
+			ImmutableList<int> numbersList;
+			numbersList = ImmutableList<int>.Empty;
+			numbersList = ImmutableList.Create<int> ( 1, 3, 5, 7 );
 			AddNumbersToList(numbersList);
 			var total = TotalTheNumbers(numbersList);
 			Console.WriteLine(total);
 		}
 
-		public void AddNumbersToList(List<int>inputList)
+		public void AddNumbersToList(ImmutableList<int>inputList)
 		{
 			// Pure functions should treat inputs 
 			// as immutable
@@ -60,7 +42,7 @@ namespace ConsoleApp
 			inputList.Add(2);
 			inputList.Add(4);
 		}
-		public int TotalTheNumbers(List<int> inputList)
+		public int TotalTheNumbers(ImmutableList<int> inputList)
 		{
 			int total = 0;
 			foreach (int number in inputList)
