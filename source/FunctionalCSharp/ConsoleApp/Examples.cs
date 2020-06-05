@@ -12,7 +12,7 @@ public	class Examples
 		// also this code is not easily testable
 		public DateTime GetCurrentTimeRoundedUpToCustomMinuteInterval(int interval, DateTime startTime)
 		{
-			
+			// 	var currentTime = DateTime.Now;
 			var minutesSpan = TimeSpan.FromMinutes(interval).Ticks;
 
 			if (startTime.Ticks % minutesSpan == 0)
