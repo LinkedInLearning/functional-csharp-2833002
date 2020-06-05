@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{BA01BB1F-2481-4626-8FA0-5B776FD750A0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AvoidSideEffects", "AvoidSideEffects", "{B8F3A6F1-743C-4B6C-8666-8CCAD4310CCA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MutateInputArgs", "MutateInputArgs", "{B8F3A6F1-743C-4B6C-8666-8CCAD4310CCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
