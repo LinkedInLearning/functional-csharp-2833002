@@ -10,7 +10,8 @@ public	class Examples
 		// with parameters passed into the function 
 
 		// also this code is not easily testable
-		public DateTime GetCurrentTimeRoundedUpToCustomMinuteInterval(int interval, DateTime startTime)
+		public DateTime GetCurrentTimeRoundedUpToCustomMinuteInterval(int interval, 
+																																	DateTime startTime)
 		{
 			// 	var currentTime = DateTime.Now;
 			var minutesSpan = TimeSpan.FromMinutes(interval).Ticks;
