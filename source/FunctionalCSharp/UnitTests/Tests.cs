@@ -7,7 +7,7 @@ namespace UnitTests
 	public class APureFunction_Should
 	{
 		[TestMethod]
-		public void ReturnSameResults_WhenSameInputs1()
+		public void ReturnSameResults_WhenSameInputs()
 		{
 			// arrange
 			var examples = new Examples();
