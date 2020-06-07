@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Immutable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,12 +11,17 @@ namespace ConsoleApp
 	{
 		public void DoWork()
 		{
+			Color color1 = new Color.Builder().Create(); // defaults
+			Color color2 = new Color.Builder().Red(127).Create(); // red only
+			Color color3 = new Color.Builder().Green(63).Alpha(255).Create(); // Green and Alpha
 
-			// instantiate the Immutable color class
+			var greenValue = color3.Green;
 
-			var myColor1 = new Immutable.Color(red: 127, green: 0, blue: 255);
-			Console.WriteLine(myColor1.ToString());
-			var isBlack = myColor1.IsBlack();
+			//color2.Red = 0;
+
+			Color lightenedColor = color3.Lighten(22);
+
+
 		}
 
 	}
