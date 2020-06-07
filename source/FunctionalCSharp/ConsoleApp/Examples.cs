@@ -14,7 +14,8 @@ namespace ConsoleApp
 			// instantiate the Immutable color class
 
 			var myColor1 = new Immutable.Color(red: 127, green: 0, blue: 255);
-			var myColor2 = new Immutable.Color(red: 191);
+			Console.WriteLine(myColor1.ToString());
+			var isBlack = myColor1.IsBlack();
 		}
 
 	}

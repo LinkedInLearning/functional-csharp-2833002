@@ -5,29 +5,8 @@ using System.Text;
 namespace ConsoleApp.Immutable
 {
 	// simulate an RGB color class
-	class Color
+	public class Color
 	{
-
-		// this style of automatic property is obsolete
-		// for Immutable types
-		public int Orange { get; private set; }
-
-		// this is better, but slightly more verbose
-
-		// this backing field must be set in the constructor
-		// as there is no setter 
-		private readonly int _purple;
-
-		public int Purple
-		{
-			get { return _purple; }
-
-		}
-
-
-		// In C# 6 (released in 2015) you can create
-		// read-only automatically-implemented properties:
-		// this property can only be assigned in a constructor
 
 		public byte Red { get; }
 		public byte Green { get; }
@@ -37,14 +16,26 @@ namespace ConsoleApp.Immutable
 		{
 			Red = red;
 			Green = green;
-			Blue = Blue;
-		}
-		public Color(byte red)
-		{
-			Red = red;
-			Green = 0;
-			Blue = 0;
+			Blue = blue;
+			IsWhite = (Red == 255 && Green == 255 && Blue == 255);
 		}
 
+		// ToString as a Pure function
+
+		public override string ToString()
+		{
+			return $"Red: {Red}, Green: {Green}, Blue: {Blue}";
+		}
+
+		public bool IsBlack()
+		{
+			// instance methods must be pure
+			return (Red == 0 && Green == 0 && Blue == 0);
+
+		}
+
+		// or implement as property
+
+		public bool IsWhite { get;  }
 	}
 }
