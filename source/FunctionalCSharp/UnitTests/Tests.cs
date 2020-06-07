@@ -44,5 +44,55 @@ namespace UnitTests
 			Assert.IsFalse(color2.IsBlack());
 			Assert.IsFalse(color3.IsBlack());
 		}
+
+		[TestMethod]
+		public void ReturnLightenedColor()
+		{
+
+			var color1 = new ConsoleApp.Immutable.Color(0, 0, 0);
+			var lightenedColor = color1.Lighten(10);
+			Color expectedColor = new ConsoleApp.Immutable.Color(10,10,10);
+
+			Assert.AreEqual(expectedColor.Red, lightenedColor.Red);
+			Assert.AreEqual(expectedColor.Green, lightenedColor.Green);
+			Assert.AreEqual(expectedColor.Blue, lightenedColor.Blue);
+		}
+		[TestMethod]
+		public void ReturnLightenedColorWhenClamped()
+		{
+
+			var color1 = new ConsoleApp.Immutable.Color(200, 210, 220);
+			var lightenedColor = color1.Lighten(60);
+			Color expectedColor = new ConsoleApp.Immutable.Color(255, 255, 255);
+
+			Assert.AreEqual(expectedColor.Red, lightenedColor.Red);
+			Assert.AreEqual(expectedColor.Green, lightenedColor.Green);
+			Assert.AreEqual(expectedColor.Blue, lightenedColor.Blue);
+		}
+
+		[TestMethod]
+		public void ReturnDarkenedColor()
+		{
+
+			var color1 = new ConsoleApp.Immutable.Color(255, 255, 255);
+			var darkenedColor = color1.Darken(15);
+			Color expectedColor = new ConsoleApp.Immutable.Color(240, 240, 240);
+
+			Assert.AreEqual(expectedColor.Red, darkenedColor.Red);
+			Assert.AreEqual(expectedColor.Green, darkenedColor.Green);
+			Assert.AreEqual(expectedColor.Blue, darkenedColor.Blue);
+		}
+		[TestMethod]
+		public void ReturnDarkenedColorWhenClamped()
+		{
+
+			var color1 = new ConsoleApp.Immutable.Color(50, 40, 30);
+			var darkenedColor = color1.Darken(70);
+			Color expectedColor = new ConsoleApp.Immutable.Color(0, 0, 0);
+
+			Assert.AreEqual(expectedColor.Red, darkenedColor.Red);
+			Assert.AreEqual(expectedColor.Green, darkenedColor.Green);
+			Assert.AreEqual(expectedColor.Blue, darkenedColor.Blue);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ConsoleApp.Immutable
@@ -36,6 +37,25 @@ namespace ConsoleApp.Immutable
 
 		// or implement as property
 
-		public bool IsWhite { get;  }
+		public bool IsWhite { get; }
+
+		public  Color Lighten(byte lightenBy)
+		{
+
+
+			var redValue = (byte)Math.Clamp(value: Red + lightenBy, min: Red, max: Byte.MaxValue);
+			var greenValue = (byte)Math.Clamp(value: Green + lightenBy, min: Green, max: Byte.MaxValue);
+			var blueValue = (byte)Math.Clamp(value: Blue + lightenBy, min: Blue, max: Byte.MaxValue);
+			return new Color(redValue, greenValue, blueValue);
+		}
+
+		public Color Darken(byte darkenBy)
+		{
+
+			var redValue = (byte)Math.Clamp(value: Red - darkenBy, min: Byte.MinValue, max: Red);
+			var greenValue = (byte)Math.Clamp(value: Green - darkenBy, min: Byte.MinValue, max: Green);
+			var blueValue = (byte)Math.Clamp(value: Blue - darkenBy, min: Byte.MinValue, max: Blue);
+			return new Color(redValue, greenValue, blueValue);
+		}
 	}
 }
