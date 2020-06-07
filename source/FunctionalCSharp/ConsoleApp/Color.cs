@@ -6,7 +6,7 @@ using System.Text;
 namespace ConsoleApp.Immutable
 {
 	// simulate an RGB color class
-	public class Color
+	public sealed class Color
 	{
 
 		public byte Red { get; }
