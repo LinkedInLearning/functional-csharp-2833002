@@ -5,7 +5,7 @@ using System.Text;
 namespace ConsoleApp.Immutable
 {
 	// simulate an RGB color class
-	class Color
+	public sealed class Color
 	{
 
 		// this style of automatic property is obsolete
