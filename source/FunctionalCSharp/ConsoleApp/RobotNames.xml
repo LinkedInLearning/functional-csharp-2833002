@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Robots>
+	<Robot>
+		<RobotName>Mingle</RobotName>
+		<TeamName>Blue</TeamName>
+		<Weight>250</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Yodel</RobotName>
+		<TeamName>Blue</TeamName>
+		<Weight>400</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Squido</RobotName>
+		<TeamName>Blue</TeamName>
+		<Weight>375</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Spook</RobotName>
+		<TeamName>Blue</TeamName>
+		<Weight>425</Weight>
+	</Robot>
+
+	<Robot>
+		<RobotName>Melville</RobotName>
+		<TeamName>Red</TeamName>
+		<Weight>980</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Filo</RobotName>
+		<TeamName>Red</TeamName>
+		<Weight>540</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Blade</RobotName>
+		<TeamName>Red</TeamName>
+		<Weight>370</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Timber</RobotName>
+		<TeamName>Red</TeamName>
+		<Weight>175</Weight>
+	</Robot>
+
+	<Robot>
+		<RobotName>Skedle</RobotName>
+		<TeamName>Green</TeamName>
+		<Weight>340</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Frex</RobotName>
+		<TeamName>Green</TeamName>
+		<Weight>750</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Stingee</RobotName>
+		<TeamName>Green</TeamName>
+		<Weight>250</Weight>
+	</Robot>
+	<Robot>
+		<RobotName>Dodgery</RobotName>
+		<TeamName>Green</TeamName>
+		<Weight>650</Weight>
+	</Robot>
+
+
+
+</Robots>
