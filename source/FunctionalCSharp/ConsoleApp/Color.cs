@@ -37,7 +37,7 @@ namespace ConsoleApp.Immutable
 		{
 			Red = red;
 			Green = green;
-			Blue = Blue;
+			Blue = blue;
 		}
 		public Color(byte red)
 		{
