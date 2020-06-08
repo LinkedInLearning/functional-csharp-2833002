@@ -30,6 +30,12 @@ namespace ConsoleApp
 
 		#region List as shared state
 
+		private void WorkWithList()
+		{
+			var countA = _numbers.Count;
+			AddNumbersToList();
+			var countB = _numbers.Count;
+		}
 
 		private List<int> _numbers = new List<int> { 1, 3, 5, 7 };
 
