@@ -1,45 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace ConsoleApp
 {
 	class Examples
 	{
-		public void ExamplesOfExpressions() {
-			//An expression yields a value 
-			// and can be used in places where a value is expected
+		public void DoWork()
+		{
 
-			// variables to hold the "value"
 
-			string stringValue;
-			int intValue;
+			var currentProduct = new Product(productName: "Microphone", retailPrice: 200M);
+			var salePriceA = GetProductPrice(product: currentProduct, quantity: 12, isPremiumCustomer: true);
 
-			// literals are expressions
-
-			stringValue = "hello";
-			intValue = 909;
-
-			// variables are expression
-			string hello = stringValue;
-			int x = intValue;
-
-			// invocations (function calls that return a values)
-
-			var upperCaseWord = stringValue.ToUpper();
-			var concatValue = $"first number{intValue}, second number{x}";
-
-			double calculatedValue = Math.Sqrt(Math.Abs(3) + x);
-
-			// operators and operands
-
-			bool isBig = x > 1000;
-			string isBigString = isBig ? "Big Number" : "Small number"
-;
-
+			var salePriceB = GetProductPriceByExpression(product: currentProduct, quantity: 12, isPremiumCustomer: true);
 		}
 
-		// Expressions include anything that produces a value, such as these:
+		#region If Statements
+		public decimal GetProductPrice(Product product, int quantity, bool isPremiumCustomer)
+		{
+			// statement version
 
+			// note that the purpose of the if statement is to mutate the value of the discountAmount variable
+			// note that the discountAmount variable is declared outside the statements
+			decimal discountAmount = 0;
+			if (quantity > 10)
+			{
+				discountAmount += .15M;
+			}
+			if (isPremiumCustomer)
+			{
+				discountAmount += .05M;
+			}
+			return product.RetailPrice * (1 - discountAmount);
+
+
+		}
+		public decimal GetProductPriceByExpression(Product product, int quantity, bool isPremiumCustomer)
+		{
+			// expression version
+			// In this version there is no mutation of variable, and also the code is more compact.
+
+			decimal discountAmount = (quantity > 10 ? .15M : 0) + (isPremiumCustomer ? .05M : 0);
+
+			return product.RetailPrice * (1 - discountAmount);
+
+			// expressions are more composable
+
+		}
+		#endregion
+
+		public string GetColorHex(StandardColors colors)
+		{
+			string hexString = string.Empty;
+			switch (colors)
+			{
+				case StandardColors.Red:
+					hexString = "FF0000";
+					break;
+				case StandardColors.Orange:
+					hexString = "FFA500";
+					break;
+				case StandardColors.Yellow:
+					hexString = "FFFF00";
+					break;
+				case StandardColors.Green:
+					hexString = "008000";
+					break;
+				case StandardColors.Blue:
+					hexString = "0000FF";
+					break;
+				case StandardColors.Black:
+					hexString = "FFFFFF";
+					break;
+				case StandardColors.White:
+					hexString = "000000";
+					break;
+				default:
+					hexString = "000000";
+					break;
+			}
+			return hexString;
+		}
+
+		public string GetColorHexByExpression(StandardColors colors)
+		{
+			string hexString = colors switch
+			{
+				StandardColors.Red => "FF0000",
+				StandardColors.Orange => "FFA500",
+				StandardColors.Yellow => "FFFF00",
+				StandardColors.Green => "008000",
+				StandardColors.Blue => "0000FF",
+				StandardColors.Black => "FFFFFF",
+				StandardColors.White => "000000",
+				_ => "000000",
+			};
+			return hexString;
+		}
+
+		public enum StandardColors
+		{
+			Red,
+			Orange,
+			Yellow,
+			Green,
+			Blue,
+			Indigo,
+			Violet,
+			Black,
+			White
+		}
+	}
+	public class Product
+	{
+		public decimal RetailPrice { get; }
+		public string ProductName { get; }
+
+		public Product(string productName, decimal retailPrice)
+		{
+			ProductName = productName;
+			RetailPrice = retailPrice;
+
+		}
 	}
 }

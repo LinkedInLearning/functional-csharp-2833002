@@ -6,8 +6,9 @@ namespace ConsoleApp
 	{
 		static void Main(string[] args)
 		{
-			// all demo code is in the repository branches
-			Console.WriteLine("Hello World!");
+			var examples = new Examples();
+
+			examples.DoWork();
 		}
 	}
 }
