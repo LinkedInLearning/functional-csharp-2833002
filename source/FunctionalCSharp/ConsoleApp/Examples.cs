@@ -27,9 +27,10 @@ namespace ConsoleApp
 
 			// But what about when we do need to change the instance
 			// For example add 3 days to the existing date.
-			dt2 = new DateTime(year: 2025, month: 10, day: dt1.Day + 3);
-			// or use the existing variable, 
-			dt1 = new DateTime(year: 2025, month: 10, day: dt1.Day + 3);
+			dt2 = new DateTime(year: dt1.Year, month: dt1.Month, day: dt1.Day + 3);
+			
+			
+			
 
 
 
