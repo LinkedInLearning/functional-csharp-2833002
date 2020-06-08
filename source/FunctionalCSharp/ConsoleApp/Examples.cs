@@ -37,11 +37,15 @@ namespace ConsoleApp
 		}
 		public ImmutableList<Robot> GetRobots()
 		{
+			var ran = new Random();
 			var xmlDoc = XDocument.Load(RobotFileName);
 			var robots = xmlDoc.Root.Elements("Robot")
 								.Select(x=> new Robot {RobotName= x.Element("RobotName").Value,
 																				TeamName = x.Element("TeamName").Value,
-																				Weight = (int)x.Element("Weight")
+																				Weight = (int)x.Element("Weight"),
+																				Speed = ran.Next(1, 18),
+																				Strength = ran.Next(1, 18),
+																				Endurance = ran.Next(1, 18)
 								}).ToArray();
 			return ImmutableList.Create(robots);
 		}
