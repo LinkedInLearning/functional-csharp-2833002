@@ -6,7 +6,7 @@ namespace ConsoleApp
 {
 	public class Examples
 	{
-	
+
 
 		// avoid side effects in functions
 		// A side effect is a change of system state 
@@ -17,7 +17,22 @@ namespace ConsoleApp
 		// 2. Mutate its input arguments
 		// 
 		//
-	
+		public void WorkWithCounter()
+		{
+			int startNumber = 10;
+			int newNumber = IncrementByTwo(startNumber);
+			newNumber = IncrementByFive(newNumber);
+		}
+
+		public int IncrementByFive(int originalNumber)
+		{
+			return originalNumber + 5;
+		}
+
+		public int IncrementByTwo(int originalNumber)
+		{
+			return originalNumber + 2;
+		}
 
 		#region List as shared state
 
