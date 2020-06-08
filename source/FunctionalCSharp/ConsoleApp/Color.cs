@@ -10,15 +10,15 @@ namespace ConsoleApp.Immutable
 
 		// this style of automatic property is obsolete
 		// for Immutable types
-		public int Orange { get; private set; }
+		public byte Orange { get; private set; }
 
 		// this is better, but slightly more verbose
 
 		// this backing field must be set in the constructor
 		// as there is no setter 
-		private readonly int _purple;
+		private readonly byte _purple;
 
-		public int Purple
+		public byte Purple
 		{
 			get { return _purple; }
 
