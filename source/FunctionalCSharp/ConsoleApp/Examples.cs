@@ -20,7 +20,7 @@ namespace ConsoleApp
 		public void DoWork()
 		{
 		
-			var primeNames = GetRobots();
+			var robotNames = GetRobots();
 		}
 
 	
