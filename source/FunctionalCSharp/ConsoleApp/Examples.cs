@@ -20,10 +20,21 @@ namespace ConsoleApp
 		public void DoWork()
 		{
 		
-			var primeNames = GetRobots();
+			var robots = GetRobots();
+			int total = GetTotalWeight(robots);
+			var blueRobots = ImmutableList.Create(robots.Where(x => x.TeamName == "Blue").ToArray());
+			int blueTeamTotal = GetTotalWeight(blueRobots);
 		}
 
-	
+		public int GetTotalWeight(ImmutableList<Robot> robots)
+		{
+			int total = 0;
+			foreach (Robot robot in robots)
+			{
+				total += robot.Weight;
+			}
+			return total;
+		}
 		public ImmutableList<Robot> GetRobots()
 		{
 			var xmlDoc = XDocument.Load(RobotFileName);
