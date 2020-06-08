@@ -34,13 +34,13 @@ namespace ConsoleApp
 			Console.WriteLine(total);
 		}
 
-		public void AddNumbersToList(ImmutableList<int>inputList)
+		public ImmutableList<int> AddNumbersToList(ImmutableList<int>inputList)
 		{
 			// Pure functions should treat inputs 
 			// as immutable
 			// Immutable types are a core concept for FP
-			inputList.Add(2);
-			inputList.Add(4);
+			return inputList.Add(2);
+			//inputList.Add(4);
 		}
 		public int TotalTheNumbers(ImmutableList<int> inputList)
 		{
