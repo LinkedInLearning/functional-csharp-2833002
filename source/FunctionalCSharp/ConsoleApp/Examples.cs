@@ -6,6 +6,12 @@ namespace ConsoleApp
 {
 	class Examples
 	{
+		// from the Microsoft docs
+		// Expressions can consist of a literal value, 
+		// a method invocation, 
+		// an operator and its operands, 
+		// or a simple name. Simple names can be the name of a variable, type member, method parameter, namespace or type.
+
 		public void ExamplesOfExpressions() {
 			//An expression yields a value 
 			// and can be used in places where a value is expected
@@ -15,13 +21,15 @@ namespace ConsoleApp
 			string stringValue;
 			int intValue;
 
+			intValue = Int32.MaxValue;
+
 			// literals are expressions
 
 			stringValue = "hello";
 			intValue = 909;
 
-			// variables are expression
-			string hello = stringValue;
+			// variables are expressions
+			string sayHello = stringValue;
 			int x = intValue;
 
 			// invocations (function calls that return a values)
@@ -34,12 +42,11 @@ namespace ConsoleApp
 			// operators and operands
 
 			bool isBig = x > 1000;
-			string isBigString = isBig ? "Big Number" : "Small number"
-;
+			string isBigString = isBig ? "Big Number" : "Small number";
 
 		}
 
-		// Expressions include anything that produces a value, such as these:
+	
 
 	}
 }
