@@ -41,7 +41,7 @@ namespace ConsoleApp
 			var PowersOfThree = numbers.TransformWithOperation(x=>x*x*x);
 
 			var Added = numbers.TransformWithOperation(Extensions.AddTo(3));
-			var Sines = numbers.TransformWithOperation(Extensions.GetMax(20));
+			var maxNumbers = numbers.TransformWithOperation(Extensions.GetMax(20));
 
 		}
 
