@@ -53,6 +53,7 @@ namespace ConsoleApp
 
 		}
 		#endregion
+		#region Switch Statements
 
 		public string GetColorHex(StandardColors colors)
 		{
@@ -103,6 +104,8 @@ namespace ConsoleApp
 			return hexString;
 		}
 
+		#endregion
+		#region Types
 		public enum StandardColors
 		{
 			Red,
@@ -127,5 +130,6 @@ namespace ConsoleApp
 			RetailPrice = retailPrice;
 
 		}
+			#endregion
+		}
 	}
-}
