@@ -42,6 +42,9 @@ namespace ConsoleApp
 			// expression version
 			// In this version there is no mutation of variable, and also the code is more compact.
 
+			//	The conditional operator ?:, also known as the ternary conditional operator, 
+			// evaluates a Boolean expression and returns the result of one of the two expressions, depending on whether the Boolean expression evaluates to true or false.
+
 			decimal discountAmount = (quantity > 10 ? .15M : 0) + (isPremiumCustomer ? .05M : 0);
 
 			return product.RetailPrice * (1 - discountAmount);
