@@ -1,51 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 
 namespace ConsoleApp
 {
-	class Examples
+	internal class Examples
 	{
-
 		public void DoWorkWithStandardMethods()
 		{
-			int resultA = MakeNegative(ToPowerFour(5));
-			int resultB = ToPowerFour(MakeNegative(5));
-			int resultC = AddTo(ToPowerFour(MakeNegative(5)), 3);
+			int resultA = MakeNegative(ToFourthPower(5));
+			int resultB = ToFourthPower(MakeNegative(5));
+			int resultC = AddTo(ToFourthPower(MakeNegative(5)), 3);
 		}
+
 		public void DoWorkWithFunc()
 		{
-			Func<int, int> toPowerFour = x => x * x * x * x;
+			Func<int, int> toFourthPower = x => x * x * x * x;
 			Func<int, int> makeNegative = x => -1 * x;
 			Func<int, int, int> addTo = (x, y) => x + y;
 
-
-			int resultA = addTo(toPowerFour(makeNegative(5)), 3);
+			int resultA = addTo(toFourthPower(makeNegative(5)), 3);
 
 			// compose a new function
 
-			var composed = makeNegative.Compose(toPowerFour));
+			var composed = makeNegative.Compose(toFourthPower);
 			// var composed2 = makeNegative.Compose(toPowerFour).Compose(addTo);
 			int resultB = composed(5);
-		
 		}
 
-		public int ToPowerFour(int candidate)
+		#region Standard Functions
+		public int ToFourthPower(int candidate)
 		{
 			return candidate * candidate * candidate * candidate;
 		}
-
 
 		public int MakeNegative(int candidate)
 		{
 			return candidate * -1;
 		}
+
 		public int AddTo(int candidate, int adder)
 		{
 			return candidate + adder;
-		}
-
+		} 
+		#endregion
 	}
 
 	public static class Extensions
