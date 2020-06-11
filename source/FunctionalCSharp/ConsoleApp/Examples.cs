@@ -9,17 +9,7 @@ namespace ConsoleApp
 	class Examples
 	{
 
-		public void DoWorkWithStandardLambda()
-		{
-			Func<int, int> toPowerFour = x => x * x * x * x;
-			Func<int, int> makeNegative = x => -1 * x;
 	
-
-			int value = 5;
-			int resultA = value.PerformOperation(toPowerFour).PerformOperation(makeNegative).PerformOperation(x=> x + 3);
-			double doubleVal = 7.5;
-			double resultB = doubleVal.PerformOperation(x => Math.Sin(x)).PerformOperation(x => x * Math.PI);
-		}
 
 
 		public void DoWorkWithPipeine()
@@ -42,12 +32,25 @@ namespace ConsoleApp
 			
 		}
 
-		
+		public void DoWorkWithStandardLambda()
+		{
+			Func<int, int> toPowerFour = x => x * x * x * x;
+			Func<int, int> makeNegative = x => -1 * x;
+
+
+			int value = 5;
+			int resultA = value.PerformOperation(toPowerFour).PerformOperation(makeNegative).PerformOperation(x => x + 3);
+			double doubleVal = 7.5;
+			double resultB = doubleVal.PerformOperation(x => Math.Sin(x)).PerformOperation(x => x * Math.PI);
+
+
+		}
 
 	}
 
 	public static class Extensions
 	{
+		#region Previous examples
 		// input and return are the same type
 		public static int ToPowerFour(this int candidate)
 		{
@@ -62,7 +65,9 @@ namespace ConsoleApp
 		public static int AddTo(this int candidate, int adder)
 		{
 			return candidate + adder;
-		}
+		} 
+		#endregion
+
 		public static T PerformOperation<T>(this T value, Func<T, T> performer) where T : struct
 		{
 		

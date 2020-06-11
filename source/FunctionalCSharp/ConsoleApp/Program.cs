@@ -8,8 +8,10 @@ namespace ConsoleApp
 		{
 
 			var examples = new Examples();
-			examples.DoWorkWithStandardMethods();
+			
 			examples.DoWorkWithPipeine();
+
+			examples.DoWorkWithStandardLambda();
 		}
 	}
 }
