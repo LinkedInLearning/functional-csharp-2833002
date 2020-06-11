@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace ConsoleApp
@@ -8,51 +9,64 @@ namespace ConsoleApp
 	class Examples
 	{
 
-		public void DoWorkWithStandardMethods()
-		{
-			int resultA = MakeNegative(ToPowerFour(5));
-			int resultB = ToPowerFour(MakeNegative(5));
-			int resultC = AddTo(ToPowerFour(MakeNegative(5)), 3);
-		}
-		public void DoWorkWithFunc()
+		public void DoWorkWithStandardLambda()
 		{
 			Func<int, int> toPowerFour = x => x * x * x * x;
 			Func<int, int> makeNegative = x => -1 * x;
-			Func<int, int, int> addTo = (x, y) => x + y;
+	
+
+			int value = 5;
+			int resultA = value.PerformOperation(toPowerFour).PerformOperation(makeNegative).PerformOperation(x=> x + 3);
+			double doubleVal = 7.5;
+			double resultB = doubleVal.PerformOperation(x => Math.Sin(x)).PerformOperation(x => x * Math.PI);
+		}
 
 
-			int resultA = addTo(toPowerFour(makeNegative(5)), 3);
-
-			// compose a new function
-
-			var composed = makeNegative.Compose(toPowerFour));
-			// var composed2 = makeNegative.Compose(toPowerFour).Compose(addTo);
-			int resultB = composed(5);
+		public void DoWorkWithPipeine()
+		{
 		
-		}
-
-		public int ToPowerFour(int candidate)
-		{
-			return candidate * candidate * candidate * candidate;
-		}
 
 
-		public int MakeNegative(int candidate)
-		{
-			return candidate * -1;
+			//int resultA = addTo(toPowerFour(makeNegative(5)), 3);
+
+			//// compose a new function
+
+			//var composed = makeNegative.Compose(toPowerFour));
+			//// var composed2 = makeNegative.Compose(toPowerFour).Compose(addTo);
+			//int resultB = composed(5);
+
+			int value = 5;
+			int resultA = value.ToPowerFour().MakeNegative();
+			int resultB = value.ToPowerFour().MakeNegative().AddTo(10);
+
+			
 		}
-		public int AddTo(int candidate, int adder)
-		{
-			return candidate + adder;
-		}
+
+		
 
 	}
 
 	public static class Extensions
 	{
-		public static Func<T, TReturn2> Compose<T, TReturn1, TReturn2>(this Func<TReturn1, TReturn2> func1, Func<T, TReturn1> func2)
+		// input and return are the same type
+		public static int ToPowerFour(this int candidate)
 		{
-			return x => func1(func2(x));
+			return candidate * candidate * candidate * candidate;
+		}
+
+
+		public static int MakeNegative(this int candidate)
+		{
+			return candidate * -1;
+		}
+		public static int AddTo(this int candidate, int adder)
+		{
+			return candidate + adder;
+		}
+		public static T PerformOperation<T>(this T value, Func<T, T> performer) where T : struct
+		{
+		
+			return performer(value);
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace ConsoleApp
 
 			var examples = new Examples();
 			examples.DoWorkWithStandardMethods();
-			examples.DoWorkWithFunc();
+			examples.DoWorkWithPipeine();
 		}
 	}
 }
