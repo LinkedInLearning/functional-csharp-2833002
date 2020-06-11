@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -9,68 +10,74 @@ namespace ConsoleApp
 	class Examples
 	{
 
-	
 
 
-		public void DoWorkWithPipeine()
+
+		public void UseEnumerablePipeline()
 		{
+
+			// this is similar to the LINQ versions
+
+			var numbers = Enumerable.Range(1, 120);
 		
+			// evaluated from right to left
 
+			var resultA = numbers.WhereAsPipeline(x => x % 5 == 0).ToList();
+			var resultB = numbers.WhereAsPipeline(x => x % 12 ==0).TransformAsPipeline(x => x * 10).ToList();
 
-			//int resultA = addTo(toPowerFour(makeNegative(5)), 3);
-
-			//// compose a new function
-
-			//var composed = makeNegative.Compose(toPowerFour));
-			//// var composed2 = makeNegative.Compose(toPowerFour).Compose(addTo);
-			//int resultB = composed(5);
-
-			int value = 5;
-			int resultA = value.ToPowerFour().MakeNegative();
-			int resultB = value.ToPowerFour().MakeNegative().AddTo(10);
-
-			
+			var resultC = resultB.SkipByAsPipeline(30).ToList();
 		}
 
-		public void DoWorkWithStandardLambda()
-		{
-			Func<int, int> toPowerFour = x => x * x * x * x;
-			Func<int, int> makeNegative = x => -1 * x;
 
-
-			int value = 5;
-			int resultA = value.PerformOperation(toPowerFour).PerformOperation(makeNegative).PerformOperation(x => x + 3);
-			double doubleVal = 7.5;
-			double resultB = doubleVal.PerformOperation(x => Math.Sin(x)).PerformOperation(x => x * Math.PI);
-
-
-		}
 
 	}
 
 	public static class Extensions
 	{
-		#region Previous examples
-		// input and return are the same type
-		public static int ToPowerFour(this int candidate)
+
+		public static IEnumerable<T> WhereAsPipeline<T>(this IEnumerable<T> source, Func<T, bool> predicate)
 		{
-			return candidate * candidate * candidate * candidate;
-		}
+			// execute this code
+			// for every item in the enumerable
+			foreach (T item in source)
+			{
+				if (predicate(item))
+				{
+					yield return item;
+				}
+				
+			}
 
 
-		public static int MakeNegative(this int candidate)
-		{
-			return candidate * -1;
 		}
-		public static int AddTo(this int candidate, int adder)
+
+		public static IEnumerable<T> TransformAsPipeline<T>(this IEnumerable<T> source, Func<T, T> transformer)
 		{
-			return candidate + adder;
-		} 
-		#endregion
+			// execute this code
+			// for every item in the enumerable
+			foreach (T item in source)
+			{
+
+				yield return transformer(item);
+			}
+
+		}
+		public static IEnumerable<T> SkipByAsPipeline<T>(this IEnumerable<T> source, int numberToSkip)
+		{
+			using (IEnumerator<T> e = source.GetEnumerator())
+			{
+				while (numberToSkip > 0 && e.MoveNext()) numberToSkip--;
+				if (numberToSkip <= 0)
+				{
+					while (e.MoveNext()) yield return e.Current;
+				}
+			}
+
+		}
 
 		public static T PerformOperation<T>(this T value, Func<T, T> performer) where T : struct
 		{
-		
+
 			return performer(value);
 		}
 	}

@@ -9,9 +9,9 @@ namespace ConsoleApp
 
 			var examples = new Examples();
 			
-			examples.DoWorkWithPipeine();
+			examples.UseEnumerablePipeline();
 
-			examples.DoWorkWithStandardLambda();
+
 		}
 	}
 }
