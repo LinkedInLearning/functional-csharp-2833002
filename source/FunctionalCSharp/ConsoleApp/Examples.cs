@@ -1,41 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace ConsoleApp
 {
-	class Examples
+	internal class Examples
 	{
-
-
-
-
 		public void UseEnumerablePipeline()
 		{
-
 			// this is similar to the LINQ versions
 
 			var numbers = Enumerable.Range(1, 120);
-		
+
 			// evaluated from right to left
 
 			var resultA = numbers.WhereAsPipeline(x => x % 5 == 0).ToList();
-			var resultB = numbers.WhereAsPipeline(x => x % 12 ==0).TransformAsPipeline(x => x * 10).ToList();
+			var resultB = numbers.WhereAsPipeline(x => x % 12 == 0).TransformAsPipeline(x => x * 10).ToList();
 
-			var resultC = resultB.SkipByAsPipeline(30).ToList();
+			var resultC = resultB.SkipByAsPipeline(6).ToList();
 		}
-
-
-
 	}
 
 	public static class Extensions
 	{
-
-		public static IEnumerable<T> WhereAsPipeline<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		public static IEnumerable<T> WhereAsPipeline<T>(this IEnumerable<T> source, Predicate<T> predicate)
 		{
 			// execute this code
 			// for every item in the enumerable
@@ -45,10 +33,7 @@ namespace ConsoleApp
 				{
 					yield return item;
 				}
-				
 			}
-
-
 		}
 
 		public static IEnumerable<T> TransformAsPipeline<T>(this IEnumerable<T> source, Func<T, T> transformer)
@@ -57,11 +42,10 @@ namespace ConsoleApp
 			// for every item in the enumerable
 			foreach (T item in source)
 			{
-
 				yield return transformer(item);
 			}
-
 		}
+
 		public static IEnumerable<T> SkipByAsPipeline<T>(this IEnumerable<T> source, int numberToSkip)
 		{
 			using (IEnumerator<T> e = source.GetEnumerator())
@@ -72,12 +56,10 @@ namespace ConsoleApp
 					while (e.MoveNext()) yield return e.Current;
 				}
 			}
-
 		}
 
 		public static T PerformOperation<T>(this T value, Func<T, T> performer) where T : struct
 		{
-
 			return performer(value);
 		}
 	}
