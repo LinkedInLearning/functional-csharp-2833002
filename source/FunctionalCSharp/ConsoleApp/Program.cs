@@ -8,8 +8,8 @@ namespace ConsoleApp
 		{
 			// all demo code is in the repository branches
 			var examples = new Examples();
-			examples.SelectManyExample();
-			examples.FlattenListProperty();
+		
+			examples.AggregateExample();
 		
 		}
 	}

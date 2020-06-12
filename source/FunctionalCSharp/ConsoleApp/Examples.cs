@@ -1,66 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ConsoleApp
 {
 	internal class Examples
 	{
-		public void FlattenListProperty()
+		public void AggregateExample()
 		{
-			// functional bind (in Haskell)
-			// called flatMap (in Scala)
-			// and is concept is called flattening in C#
-			// LINQ SelectMany or ContinueWith
+			// function fold (or reduce)
+			// fold applies a function to each item in the list
+			// it takes a list, and returns a single result (not a list)
+			// It is an accumulative function
+			// for example, SUM totals the 1st and 2nd item 
+			// then totals that result with the 3rd item and so on...
+			// 
+			// LINQ (Aggregate, Sum, Average)
+			// LINQ (Max, Min, Count)
 
-			// flattens a multi-dimensional set into a single set
+			ImmutableList<int> setA = ImmutableList.Create(5, 4, 1, 3, 9, 8, 6, 7, 2, 12, 24);
+			ImmutableList<int> setB = ImmutableList.Create(Enumerable.Range(1, 40).Where(x => x % 5 == 0).ToArray());
 
-			// or another way to say
-			// SelectMany select values from a nested collection
+			// predefined aggregates
+			var total = setA.Sum();
+			var count = setB.Count();
 
-			var brandA = new Brand { Name = "Fancy-Shoes", Colors = new List<string> { "Red", "Orange" } };
-			var brandB = new Brand { Name = "Lux-Cars", Colors = new List<string> { "Gold", "Silver" } };
-			var brandC = new Brand { Name = "Wow-Electronics", Colors = new List<string> { "Black", "Blue", "Purple" } };
-			List<Brand> brands = new List<Brand>();
-			brands.Add(brandA);
-			brands.Add(brandB);
-			brands.Add(brandC);
+			var highestNumber = setB.Max();
 
-		
-			// this does not produce the results we want
-			var resultA = brands.Select(x => x.Colors).ToList(); 
-			//var resultB = brands.SelectMany(x => x.Colors).ToList();
+
+			// custom aggregate
+
+			var multipleOf = setA.Aggregate((first, second) => first * second);
+
+			// set the initial seed (accumulator value)
+
+			var anotherMultiple = setA.Aggregate(100, (first, second) => first * second);
 		}
 
-		public void SelectManyExample()
+		public void AggregateRobots()
 		{
-			var setA = Enumerable.Range(2, 3);
-			var setB = Enumerable.Range(5, 3);
+			
+			var robot1 = new Robot(name: "Robot1", batteryLevel: 60);
+			var robot2 = new Robot(name: "Robot2", batteryLevel: 45);
+			var robot3 = new Robot(name: "Robot3", batteryLevel: 95);
+			var robot4 = new Robot(name: "Robot4", batteryLevel: 27);
 
-			var basicSelect = setA.Select(a => $"value {a}");
-		
-			var basicJoin = setA.SelectMany(a => setB.Select(b => $"A:{a} B:{b}"));
+			ImmutableList<Robot> robots = ImmutableList.Create(new Robot[] { robot1, robot2 , robot3, robot4});
 
-		
-			var resultsA = basicSelect.ToList();
-			var resultsB = basicJoin.ToList();
+			var lowBattery = robots.Min(x => x.BatteryLevel);
+	
 		}
+
 	}
 
-	public static class Extensions
+
+
+
+	public class Robot
 	{
-		// signature looks like this
-		public static IEnumerable<B> SelectMany_Example<A, B>(this IEnumerable<A> first, Func<A, IEnumerable<B>> selector)
+		public string Name { get; }
+		public int BatteryLevel { get; }
+		public Robot(string name, int batteryLevel)
 		{
-			return null;
+			Name = name;
+			BatteryLevel = batteryLevel;
 		}
-	}
-
-	// this in not immutable yet
-
-	public class Brand
-	{
-		public string Name { get; set; }
-		public List<string> Colors { get; set; }
 	}
 }
