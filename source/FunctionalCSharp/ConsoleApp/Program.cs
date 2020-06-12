@@ -8,7 +8,9 @@ namespace ConsoleApp
 		{
 			// all demo code is in the repository branches
 			var examples = new Examples();
-			examples.DoWork();
+			examples.SelectWithNoTransform();
+			examples.SelectWithNumberTransform();
+			examples.SelectProjectToAnotherType();
 		}
 	}
 }
