@@ -26,20 +26,22 @@ namespace ConsoleApp
 			brands.Add(brandB);
 			brands.Add(brandC);
 
-			var resultA = brands.Select(x => x).ToList();
-			var resultB = brands.SelectMany(x => x.Colors).ToList();
+		
+			// this does not produce the results we want
+			var resultA = brands.Select(x => x.Colors).ToList(); 
+			//var resultB = brands.SelectMany(x => x.Colors).ToList();
 		}
 
 		public void SelectManyExample()
 		{
-			var setA = Enumerable.Range(2, 5);
-			var setB = Enumerable.Range(-7, 5);
+			var setA = Enumerable.Range(2, 3);
+			var setB = Enumerable.Range(5, 3);
 
-			var basicSelect = setA.Select(n => $"value {n}");
-			var basicJoin = setA.SelectMany(x => setB.Select(y => $"X:{x} Y:{y}"));
+			var basicSelect = setA.Select(a => $"value {a}");
+		
+			var basicJoin = setA.SelectMany(a => setB.Select(b => $"A:{a} B:{b}"));
 
-			var cartesianLst = setA.SelectMany(a => setB.Select(b => a + " X " + b + "=" + a * b));
-
+		
 			var resultsA = basicSelect.ToList();
 			var resultsB = basicJoin.ToList();
 		}
