@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace ConsoleApp
@@ -12,12 +13,14 @@ namespace ConsoleApp
 		public void SelectWithNoTransform()
 		{
 			// functional Map == LINQ Select
-			// perform an action
+			// transform each item in the list
 
 			var numbers = Enumerable.Range(1, 50);
 
+			// use extension methods
 			var queryA = numbers.Select(x => x);// perform no actions
 
+			// use query expression
 			var queryB = from n in numbers
 									 select n;
 
