@@ -7,6 +7,7 @@ namespace ConsoleApp
 	class Examples
 	{
 
-
+		public void DoWork()
+		{ }
 	}
 }
