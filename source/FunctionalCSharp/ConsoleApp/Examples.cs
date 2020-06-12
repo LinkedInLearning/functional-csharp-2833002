@@ -9,78 +9,45 @@ namespace ConsoleApp
 	{
 
 
-		public void SelectWithNoTransform()
+		public void FilterSimple()
 		{
-			// functional Map == LINQ Select
-			// perform an action
+			// functional Filter == LINQ Where
+			// return a subset of the list based 
+			// on predicate function
 
-			var numbers = Enumerable.Range(1, 50);
+			var numbers = Enumerable.Range(1, 200);
 
-			var queryA = numbers.Select(x => x);// perform no actions
+			var queryA = numbers.Where(x => x < 20).Select(x => x);
 
 			var queryB = from n in numbers
+									 where n < 20 || n > 180
 									 select n;
 
-			// run the query
-			List<int> resultsA = new List<int>();
-			foreach (int number in queryA)
-			{
-				// this is not the functional way to
-				// populate the list
-				resultsA.Add(number);
-			}
-
-			// the functional way
-			var resultsB = queryB.ToList();
-
-		}
-
-		public void SelectWithNumberTransform()
-		{
-			// functional Map == LINQ Select
-			// perform an action
-
-			var numbers = Enumerable.Range(1, 50);
-
-			var queryA = numbers.Select(x => x * 10);
-
-			var queryB = from n in numbers
-									 select n * 10;
-
-
 			var resultsA = queryA.ToList();
 			var resultsB = queryB.ToList();
 
 		}
 
-		public void SelectProjectToAnotherType()
+		public void FilterForPrimeNumbers()
 		{
-			// functional Map == LINQ Select
-			// perform an action
+			// this predicate determines if 
+			// a number is prime
 
-			var xValues = Enumerable.Range(1, 20);
-			var yValues = Enumerable.Range(100, 20);
+			Func<int, bool> isPrime = p => Enumerable.Range(2, (int)Math.Sqrt(p) - 1)
+																		.All(divisor => p % divisor != 0);
 
-			var queryA = xValues.Select(x => new RayPoint(x, 0));
+			var primes =
+				Enumerable.Range(2, 1000 * 1000)
+				.Where(isPrime);
 
-			var queryB = from n in yValues
-									 select new RayPoint(0, n);
-
-
-			var resultsA = queryA.ToList();
-			var resultsB = queryB.ToList();
+			var resultsA = primes.ToList();
+			
 
 		}
+
+
 	}
 
-	public class RayPoint
-	{
-		public int X { get; }
-		public int Y { get; }
-		public RayPoint(int x, int y)
-		{
-			X = x;
-			Y = y;
-		}
+	
 	}
 }
