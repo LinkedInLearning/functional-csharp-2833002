@@ -8,5 +8,8 @@ namespace ConsoleApp
 	{
 
 
+		public void DoWork()
+		{ }
+
 	}
 }
