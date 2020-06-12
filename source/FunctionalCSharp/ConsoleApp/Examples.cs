@@ -21,7 +21,8 @@ namespace ConsoleApp
 			// LINQ (Max, Min, Count)
 
 			ImmutableList<int> setA = ImmutableList.Create(5, 4, 1, 3, 9, 8, 6, 7, 2, 12, 24);
-			ImmutableList<int> setB = ImmutableList.Create(Enumerable.Range(1, 40).Where(x => x % 5 == 0).ToArray());
+			ImmutableList<int> setB = 
+				ImmutableList.Create(Enumerable.Range(1, 40).Where(x => x % 5 == 0).ToArray());
 
 			// predefined aggregates
 			var total = setA.Sum();
