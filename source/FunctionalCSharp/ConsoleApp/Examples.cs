@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace ConsoleApp
@@ -9,9 +10,9 @@ namespace ConsoleApp
 		// Pure functions are similar to mathematical functions
 		// they compute an output value based on their input values. 
 		// the do nothing else in the code
-		public long CalcExponent(long originalNumber, long exponent)
+		public decimal CalcDiscount(decimal amount, decimal discountRate)
 		{
-			return originalNumber ^ exponent;
+			return amount * (1 - discountRate);
 		}
 
 	}

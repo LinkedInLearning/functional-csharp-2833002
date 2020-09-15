@@ -11,14 +11,14 @@ namespace UnitTests
 		{
 			// arrange
 			var examples = new Examples();
-			long value = 5;
-			long exponent = 3;
+			decimal salesAmount = 50M;
+			decimal discount = .3M;
 			// act
-			var result1 = examples.CalcExponent(value, exponent);
-			var result2 = examples.CalcExponent(value, exponent);
+			var result1 = examples.CalcDiscount(salesAmount, discount);
+			var result2 = examples.CalcDiscount(salesAmount, discount);
 
 			// assert
-			Assert.AreEqual((value ^ exponent), result1);
+			Assert.AreEqual((salesAmount * (1 - discount)) , result1);
 			Assert.AreEqual(result1, result2);
 		}
 	}
