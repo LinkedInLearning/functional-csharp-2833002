@@ -1,7 +1,8 @@
-# Explore functional patterns in C#
+# Advanced C#: Functional Programming Patterns
+### Explore functional patterns in C#
 This is the repository for the LinkedIn Learning course **Explore functional patterns in C#**. The full course is available from [LinkedIn Learning][lil-course-url].
 
-
+### Description
 Functional programming offers developers a straightforward way to tackle modern software problems like massive scale, distributed systems, and multiple threaded runtimes. Microsoft created the F# functional language to address this problem space and along the way they also introduced many FP features to C#. 
 
 Curious about how to work functional programming patterns into your .NET applications? In this course, Walt Ritscher shows you how. Discover how to leverage the functional programming features in C# to transform your code. Walt covers key topics such as immutability, higher-order functions, and why expressions are better for functional programs. Plus, learn how to compose function flow in C# using pipelining; work with functional programming concepts like map, filter and bind in LINQ; and more.
