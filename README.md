@@ -1,9 +1,10 @@
 # Explore functional patterns in C#
-This is the repository for the LinkedIn Learning course **Explore functional patterns in C#**. The full course is available from [LinkedIn Learning](LICOURSEURL).
+This is the repository for the LinkedIn Learning course **Explore functional patterns in C#**. The full course is available from [LinkedIn Learning][lil-course-url].
 
-## Description
 
-Functional programming (FP) languages are well equipped to handle modern software problems like massive scale, distributed systems and multiple threaded runtimes. Microsoft created the F# functional language to address this problem space and along the way they also introduced many FP features to C#. In this course we’ll look at how to exploit these new features, such as higher order functions and immutability to add functional programming to your code.
+Functional programming offers developers a straightforward way to tackle modern software problems like massive scale, distributed systems, and multiple threaded runtimes. Microsoft created the F# functional language to address this problem space and along the way they also introduced many FP features to C#. 
+
+Curious about how to work functional programming patterns into your .NET applications? In this course, Walt Ritscher shows you how. Discover how to leverage the functional programming features in C# to transform your code. Walt covers key topics such as immutability, higher-order functions, and why expressions are better for functional programs. Plus, learn how to compose function flow in C# using pipelining; work with functional programming concepts like map, filter and bind in LINQ; and more.
 
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
@@ -23,4 +24,7 @@ When you are ready to [learn more about .NET](https://www.linkedin.com/learning/
 ## About the Instructor - Walt Ritscher
 Check out my [other courses](https://www.linkedin.com/learning/instructors/walt-ritscher) on LinkedIn Learning.  Follow me on [LinkedIn](https://www.linkedin.com/in/waltritscher/?trk=lil_course) and [Twitter](https://twitter.com/waltritscher). 
 
-![Walt Ritscher Headshot](https://38ydkq.dm.files.1drv.com/y4moADNYVNnmGDQCVwkufdGJmbpNZ-ym19j09TtRSOJpMSRFbMVFrRsM7DNZ5DRAY6tb1zsk_Df8ESybhbWypqCa8DXTuGbo4oAYE36t27l2LRgiGL42VVKEksULNm076nZQRfaL_Ew2cDw0V8IwcoztB46_RSn6biJd33elOHTDlDC6jy5kdTc7P8HW_F6TdSb?width=461&height=461&cropmode=none)
+![Azure Administration: Implement and Manage Storage][lil-thumbnail-url] 
+
+[lil-course-url]: https://www.linkedin.com/learning/advanced-c-sharp-functional-programming-patterns
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2833002/2833002-1596810241957-16x9.jpg
